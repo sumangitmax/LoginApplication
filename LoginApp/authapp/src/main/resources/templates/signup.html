@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <title>Sign Up</title>
+    <style>
+        body { font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f4f4f9; }
+        .box { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); width: 300px; }
+        input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;}
+        button { width: 100%; padding: 10px; background-color: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>Sign Up</h2>
+        <p class="error" th:text="${error}"></p>
+        <form th:action="@{/signup}" th:object="${user}" method="post">
+            <input type="text" th:field="*{username}" placeholder="Choose Username" required />
+            <input type="password" th:field="*{password}" placeholder="Choose Password" required />
+            <button type="submit">Register</button>
+        </form>
+        <p>Already have an account? <a th:href="@{/}">Log In</a></p>
+    </div>
+</body>
+</html>
